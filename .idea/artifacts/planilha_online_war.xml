@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="planilha-online:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="planilha-online.war">
+      <element id="artifact" artifact-name="planilha-online:war exploded" />
+    </root>
+  </artifact>
+</component>
