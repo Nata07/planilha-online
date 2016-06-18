@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <html lang="pt-br">
 <head>
@@ -73,7 +73,8 @@
                                     <span class="animated fadeInDown delay-03s">
                                         Entre
                                     </span>
-                                    <form action="<c:url value="/validar"/>" class="form form-nav" method="post" role="form">
+                                    <form action="<c:url value="/validar"/>" class="form form-nav" method="post"
+                                          role="form">
                                         <div class="form-group">
                                             <input type="text"
                                                    class="form-control input-dropdown animated slideInLeft delay-03s"
@@ -199,27 +200,32 @@
 
 <!-- Conteudo 1 -----------------------------------
 ==================================================-->
-<div class="container marketing">
+<div class="container marketing" id="caracteristicas">
 
     <!-- Three columns of text below the carousel -->
     <div class="row conteudo">
         <div class="col-lg-4">
-            <img class="img-circle" src="img/cartao.jpg" alt="Generic placeholder image" width="140" height="140">
-            <h2 class="tituloIcone">Gastos com cartÃ£o de crÃ©dito </h2>
-            <p>Cadastre seus gastos com seu cartÃ£o de crÃ©dito e veja qual a melhor forma de nÃ£o ter gastos desnecessÃ¡rios.</p>
-            <!--<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>-->
+            <img class="img-circle" src="<c:url value="/img/cartao.jpg"/>" alt="Generic placeholder image" width="140"
+                 height="140">
+            <h2 class="tituloIcone">Gastos com cartão de crédito </h2>
+            <p>Cadastre seus gastos com seu cartão de crédito e veja qual a melhor forma de não ter gastos
+                desnecessários.</p>
         </div><!-- /.col-lg-4 -->
+
         <div class="col-lg-4">
-            <img class="img-circle" src="img/controle.jpg" alt="Generic placeholder image" width="140" height="140">
+            <img class="img-circle" src="<c:url value="/img/controle.jpg"/>" alt="Generic placeholder image" width="140"
+                 height="140">
             <h2 class="tituloIcone">Controle seus gastos</h2>
-            <p>Controle seu dinheiro, veja o que acontece em um so lugar. Receba aviso de gasto ou estouro, e nao perca mais seu sono.</p>
-            <!--<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>-->
+            <p>Controle seu dinheiro, veja o que acontece em um so lugar. Receba aviso de gasto ou estouro, e nao perca
+                mais seu sono.</p>
         </div><!-- /.col-lg-4 -->
+
         <div class="col-lg-4">
-            <img class="img-circle " src="img/circulo_peq_estat_5.png" alt="Generic placeholder image" width="140" height="140">
+            <img class="img-circle " src="<c:url value="/img/circulo_peq_estat_5.png"/>" alt="Generic placeholder image"
+                 width="140" height="140">
             <h2 class="tituloIcone">Planeje seus investimentos </h2>
-            <p>Trace suas metas e acompanhe automaticamente quanto gastou ou ainda quanto irÃ¡ gastar em cada categoria.</p>
-            <!--<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>-->
+            <p>Trace suas metas e acompanhe automaticamente quanto gastou ou ainda quanto irá gastar em cada
+                categoria.</p>
         </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->
 
@@ -230,12 +236,14 @@
 
     <div class="row featurette">
         <div class="col-md-7">
-            <h2 class="featurette-heading" style="margin-top: 50px; font-family: sans-serif;">Cadastros rÃ¡pidos. </h2>
-            <p class="lead">Com o NF FinanÃ§as vocÃª tem a facilidade nos cadastros de receitas e dispesas. VocÃª poderar cadastrar todos seus dados com poucos cliques. </p>
+            <h2 class="featurette-heading" style="margin-top: 50px; font-family: sans-serif;">Cadastros rápidos. </h2>
+            <p class="lead">Com o NF Finananças você tem a facilidade nos cadastros de receitas e dispesas. Você poderar
+                cadastrar todos seus dados com poucos cliques. </p>
         </div>
         <div class="col-md-5">
-            <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" style="margin-top: 20px;"
-                 alt="Generic placeholder" src="img/cadastro.png">
+            <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto"
+                 style="margin-top: 20px;"
+                 alt="Generic placeholder" src="<c:url value="/img/cadastro.png"/>">
 
         </div>
     </div>
@@ -244,12 +252,13 @@
 
     <div class="row featurette">
         <div class="col-md-7 col-md-push-5">
-            <h2 class="featurette-heading" style="margin-top: 50px; font-family: sans-serif;"> RelÃ¡torios completos</h2>
-            <p class="lead">O NF Financias possiu o relÃ¡torio completo para vocÃª. Tenha todos os meses, um relatorio simplificado para controle pessoal.</p>
+            <h2 class="featurette-heading" style="margin-top: 50px; font-family: sans-serif;"> Relatórios completos</h2>
+            <p class="lead">O NF Financias possiu o relatório completo para você. Tenha todos os meses, um relatorio
+                simplificado para controle pessoal.</p>
         </div>
         <div class="col-md-5 col-md-pull-7">
             <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto"
-                 alt="Generic placeholder image" src="img/icone_azul.png" style="margin-top: 20px;">
+                 alt="Generic placeholder image" src="<c:url value="/img/icone_azul.png"/>" style="margin-top: 20px;">
         </div>
     </div>
 
@@ -257,12 +266,13 @@
 
     <div class="row featurette">
         <div class="col-md-7">
-            <h2 class="featurette-heading" style="margin-top: 50px;">SeguranÃ§a </h2>
-            <p class="lead">SeguranÃ§a, uma das principais vantagem do NF FinanÃ§as. Tenha certeza que seus dados estao seguros usando nossa aplicaÃ§Ã£o.</p>
+            <h2 class="featurette-heading margin-top-10">Segurança </h2>
+            <p class="lead">Segurança, uma das principais vantagem do NF Finanças. Tenha certeza que seus dados estao
+                seguros usando nossa aplicação.</p>
         </div>
         <div class="col-md-5">
             <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto"
-                 alt="Generic placeholder image" src="img/seguranca.jpg">
+                 alt="Generic placeholder image" src="<c:url value="/img/seguranca.jpg"/>">
         </div>
     </div>
 
@@ -270,26 +280,75 @@
 
     <!-- /END THE FEATURETTES -->
 
+    <section class="main-section contact" id="contact">
 
+        <div class="row">
+            <div class="col-lg-6 col-sm-7 wow fadeInLeft">
+                <div class="contact-info-box address clearfix">
+                    <h3><i class=" icon-map-marker"></i>Address:</h3>
+                    <span>308 Negra Arroyo Lane<br>Albuquerque, New Mexico, 87111.</span>
+                </div>
+                <div class="contact-info-box phone clearfix">
+                    <h3><i class="fa-phone"></i>Fone:</h3>
+                    <span>0800-08-0800</span>
+                </div>
+                <div class="contact-info-box email clearfix">
+                    <h3><i class="fa-pencil"></i>E-mail:</h3>
+                    <span>contato@nafa.com</span>
+                </div>
+                <div class="contact-info-box hours clearfix">
+                    <h3>
+                        <i class="fa-clock-o"></i>Horário:
+                    </h3>
+                    <span>
+                        <strong>Segunda - Quinta-Feira:</strong>
+                        10h - 18h
+                        <br>
+                        <strong>Sexta-Feira:</strong>
+                        As pessoas ainda trabalham na sexta?
+                        <br>
+                        <strong>Sábado - Domingo:</strong>
+                        Só loucos.
+                    </span>
+                </div>
+                <ul class="social-link">
+                    <li class="twitter"><a href="#"><i class="fa-twitter"></i></a></li>
+                    <li class="facebook"><a href="#"><i class="fa-facebook"></i></a></li>
+                    <li class="pinterest"><a href="#"><i class="fa-pinterest"></i></a></li>
+                    <li class="gplus"><a href="#"><i class="fa-google-plus"></i></a></li>
+                    <li class="dribbble"><a href="#"><i class="fa-dribbble"></i></a></li>
+                </ul>
+            </div>
+            <div class="col-lg-6 col-sm-5 wow fadeInUp delay-05s">
+                <div class="form">
+                    <input class="input-text" type="text" name="" value="O seu nome *"
+                           onfocus="if(this.value==this.defaultValue)this.value='';"
+                           onblur="if(this.value=='')this.value=this.defaultValue;">
+                    <input class="input-text" type="text" name="" value="O seu e-mail *"
+                           onfocus="if(this.value==this.defaultValue)this.value='';"
+                           onblur="if(this.value=='')this.value=this.defaultValue;">
+                    <textarea class="input-text text-area" cols="0" rows="0"
+                              onfocus="if(this.value==this.defaultValue)this.value='';"
+                              onblur="if(this.value=='')this.value=this.defaultValue;">Sua mensagem *</textarea>
+                    <input class="input-btn" type="submit" value="Enviar">
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="footer-logo"><a href="#"><img src="<c:url value="/img/icon-45px.png"/>" alt=""></a></div>
+        <span class="copyright">Copyright 2015 | by NAFA System</span>
+    </div>
+</footer>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-<script src="/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/js/wow.js"></script>
-
-<script>
-    wow = new WOW(
-            {
-                animateClass: 'animated',
-                offset: 100
-            }
-    );
-    wow.init();
-
-</script>
+<script src="<c:url value="/js/bootstrap.min.js"/>"></script>
 
 <script type="text/javascript">
     $(window).load(function () {
@@ -300,12 +359,7 @@
             $('html, body').stop().animate({
                 scrollTop: $($anchor.attr('href')).offset().top - 102
             }, 1500, 'easeInOutExpo');
-            /*
-             if you don't want to use the easing effects:
-             $('html, body').stop().animate({
-             scrollTop: $($anchor.attr('href')).offset().top
-             }, 1000);
-             */
+
             event.preventDefault();
         });
     })
