@@ -19,8 +19,7 @@ public class Despesas implements Serializable, MinhaEntidade {
     private String descricao;
     private Float valor;
     private String tipoDespesa;
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
+    @Column(nullable = true)
     private Date data;
-   @ManyToOne(optional = false)
-    private MovimentacaoFinanceira movimentacaoFinanceira;
 }
