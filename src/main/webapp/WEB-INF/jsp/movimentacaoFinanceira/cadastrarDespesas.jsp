@@ -127,10 +127,10 @@
                 <a href="<c:url value='/'/>">Página Inicial</a>
             </li>
             <li>
-                <a href="<c:url value='/cadastrarDespesas/demonstrativo'/>">Demonstrativo</a>
+                <a href="<c:url value='/demonstrativo'/>">Demonstrativo</a>
             </li>
             <li>
-                <a href="<c:url value='/cadastrarDespesas/receitas'/>">Cadastrar Receitas</a>
+                <a href="<c:url value='/receitas'/>">Cadastrar Receitas</a>
             </li>
             <li class="ativo">
                 <a href="#">Cadastrar Despesas</a>

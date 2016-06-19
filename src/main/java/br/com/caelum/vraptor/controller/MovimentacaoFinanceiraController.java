@@ -5,6 +5,7 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
 import br.edu.unoesc.model.*;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -13,8 +14,9 @@ import javax.inject.Inject;
 /**
  * Created by Luiz Fachin on 15/06/2016.
  */
+@Data
 @Controller @ApplicationScoped @NoArgsConstructor
-public class MovimentacaoFinanceiraController {
+public class MovimentacaoFinanceiraController{
     private Pessoa pessoa;
     private Despesas despesas;
     private Receitas receitas;

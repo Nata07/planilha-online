@@ -34,80 +34,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
 
 
-    <!--SCRIPT-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/latest/js/bootstrap.min.js"></script>
 
-    <!--Remover Linha da tabela -->
-    <script>
-        (function ($) {
-
-            RemoveTableRow = function (handler) {
-                var tr = $(handler).closest('tr');
-
-                tr.fadeOut(400, function () {
-                    tr.remove();
-                });
-
-                return false;
-            };
-
-        })(jQuery);
-    </script>
-
-    <!--Adicionar linha na tabela-->
-    <script language="javascript">
-        // Fun��o respons�vel por inserir linhas na tabela
-        function inserirLinhaTabela() {
-
-            var listatipoDispesa = document.getElementById("selecao").value
-            var listaDescricao = document.getElementById("descricao").value
-            var listaValor = document.getElementById("valor").value
-            var listadata = document.getElementById("data").value.toString()
-            // var buttons = document.getElementById("remover").value
-
-            // Captura a refer�ncia da tabela com id �minhaTabela�
-            var table = document.getElementById("minhaTabela");
-            // Captura a quantidade de linhas j� existentes na tabela
-            var numOfRows = table.rows.length;
-            // Captura a quantidade de colunas da �ltima linha da tabela
-            var numOfCols = table.rows[numOfRows - 1].cells.length;
-
-            // Insere uma linha no fim da tabela.
-            var newRow = table.insertRow(numOfRows);
-
-            // Faz um loop para criar as colunas
-            for (var j = 0; j < numOfCols; j++) {
-                // Insere uma coluna na nova linha
-                newCell = newRow.insertCell(j);
-                // Insere um conte�do na coluna
-                // newCell.innerHTML = " "+ numOfRows + " "+ j;
-                // var linhatabela = numOfRows;
-                if (j == 0) {
-                    newCell.innerHTML = numOfRows;
-                }
-                if (j == 1) {
-                    newCell.innerHTML = listatipoDispesa;
-                }
-                if (j == 2) {
-
-                    newCell.innerHTML = listaDescricao;
-                }
-                if (j == 3) {
-                    newCell.innerHTML = listaValor;
-                }
-                if (j == 4) {
-                    newCell.innerHTML = listadata;
-                }
-                if (j == 5) {
-                    newCell.innerHTML = '<button class="remover btn btn-xs btn-danger" onclick="RemoveTableRow(this)" type="button">Remover</button>' + " " +
-                            '<button class="btn btn-xs btn-info" onclick="editarDados()" type="button">Editar</button>';
-                }
-
-
-            }
-        }
-    </script>
 
 </head>
 <body>
@@ -129,13 +56,13 @@
                 <a href="<c:url value='/'/>">Página Inicial</a>
             </li>
             <li>
-                <a href="<c:url value='/cadastrarDespesas/demonstrativo'/>">Demonstrativo</a>
+                <a href="<c:url value='/demonstrativo'/>">Demonstrativo</a>
             </li>
             <li class="ativo">
                 <a href="#">Cadastrar Receitas</a>
             </li>
             <li class="">
-                <a href='<c:url value="/despesas"/>'>Cadastrar Despesas</a>
+                <a href="<c:url value='/despesas'/>">Cadastrar Despesas</a>
             </li>
         </ul>
     </nav>
@@ -205,18 +132,7 @@
                     </form>
 
                     <br/>
-                    <table class="table table-bordered" id="minhaTabela">
-                        <thead>
-                        <tr>
-                            <th>N</th>
-                            <th>Tipo receita</th>
-                            <th>Descricao</th>
-                            <th>Valor</th>
-                            <th>Data</th>
-                            <th class="actions">Acao</th>
-                        </tr>
-                        </thead>
-                    </table>
+
                     <button type="button" class="btn btn-success" onclick="" id="salvar">Salvar</button>
                 </div>
             </div>
@@ -264,11 +180,6 @@
             $('#wrapper').toggleClass('toggled');
         });
     });
-</script>
-
-<script>
-    $('.datepicker').datepicker();
-    datepicker.format("dd/mm/yyyy");
 </script>
 </body>
 </html>

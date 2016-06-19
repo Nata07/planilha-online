@@ -13,6 +13,7 @@ body {
     font-weight: normal;
     color: #888888;
     margin: 0;
+    padding-bottom: 0px; !important;
 }
 
 h2 {
@@ -56,14 +57,19 @@ p {
     background: url("../img/greywaves.png");
 }
 
-ul li a {
+ul li {
     color: #222;
     text-transform: uppercase;
     transition: all 0.3s ease-in-out !important;
     -moz-transition: all 0.3s ease-in-out !important;
     -webkit-transition: all 0.3s ease-in-out !important;
-    margin: 17px 0 !important;
+    margin: 5px 0;
     font-weight: 600;
+}
+
+li a{
+    margin: 10px 0 !important;
+    padding: 10px 15px !important;
 }
 
 ul li a:hover {
@@ -109,6 +115,7 @@ li .links-nav:hover {
     overflow: hidden;
     background-color: rgba(255, 255, 255, .8);
     text-align: center;
+    margin: 0 !important;
 }
 
 .form-nav .help-block {
@@ -281,7 +288,7 @@ hr {
 }
 
 .ativo {
-    background-color: #ddd;
+    background-color: #eaebed;
 }
 
 .ativo a {
@@ -370,18 +377,22 @@ hr {
 }
 .twitter a:hover {
     background: #55acee;
+    color: white !important;
 }
 .facebook a:hover {
     background: #3b5998;
+    color: white !important;
 }
-.pinterest a:hover {
-    background: #cb2026;
+.github a:hover {
+    background: #4078c0;
+    color: white !important;
 }
 .gplus a:hover {
     background: #dd4b39;
 }
-.dribbble a:hover {
-    background: #ea4c89;
+.linkedin a:hover {
+    background: #0077b5;
+    color: white !important;
 }
 
 .form{
@@ -403,7 +414,7 @@ hr {
     -webkit-transition:all 0.3s ease-in-out;
 }
 .input-text:focus {
-    border: 1px solid #7cc576;
+    border: 1px solid #5bc0de;
     outline:0;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(124, 197, 118, 0.3);
     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(124, 197, 118, 0.3);
@@ -418,7 +429,7 @@ hr {
 .input-btn{
     width:175px;
     height:50px;
-    background:#7cc576;
+    background:#002a80;
     border-radius:4px;
     color:#ffffff;
     font-size:14px;
@@ -432,13 +443,14 @@ hr {
 }
 
 .input-btn:hover{
-    background: #111;
-    color: #fff;
+    background: white;
+    color: #2b669a;
 }
 
 .footer{
     background:url(../img/greywaves.png) left top no-repeat;
     padding:35px 0 0px;
+    padding-bottom: 40px !important;
 }
 .footer-logo{
     margin:15px auto 35px;
@@ -449,18 +461,6 @@ hr {
     font-size:14px;
     display:block;
     text-align:center;
-}
-.copyright a{
-    color:#7cc576;
-    font-weight:600;
-    text-decoration: none;
-    transition:all 0.3s ease-in-out;
-    -moz-transition:all 0.3s ease-in-out;
-    -webkit-transition:all 0.3s ease-in-out;
-}
-
-.copyright a:hover {
-    color: #fff;
 }
 
 .res-nav_click {

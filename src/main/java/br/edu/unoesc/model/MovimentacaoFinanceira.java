@@ -1,5 +1,7 @@
 package br.edu.unoesc.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -10,7 +12,9 @@ import java.util.List;
 /**
  * Created by Luiz Fachin on 12/06/2016.
  */
+
 @Entity
+@Data
 public class MovimentacaoFinanceira implements Serializable, MinhaEntidade {
 
     @Id
@@ -83,10 +87,5 @@ public class MovimentacaoFinanceira implements Serializable, MinhaEntidade {
                 despesas.remove(despesa);
             }
         });
-    }
-
-    @Override
-    public Long getCodigo() {
-        return null;
     }
 }
