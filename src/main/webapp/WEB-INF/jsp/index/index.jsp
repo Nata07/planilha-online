@@ -56,6 +56,11 @@
                         Caracteristicas
                     </a>
                 </li>
+                <li>
+                    <a href="#">
+                        Contato
+                    </a>
+                </li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -73,7 +78,7 @@
                                     <span class="animated fadeInDown delay-03s">
                                         Entre
                                     </span>
-                                    <form action="<c:url value="/validar"/>" class="form form-nav" method="post"
+                                    <form action="<c:url value="/validar"/>" class="form form-nav " method="post"
                                           role="form">
                                         <div class="form-group">
                                             <input type="text"
@@ -85,7 +90,7 @@
                                                    class="form-control input-dropdown animated slideInRight delay-03s"
                                                    name="pessoa.senha" placeholder="Senha" required>
                                             <div class="help-block text-right">
-                                                <a class="animated slideInRight delay-03s" href="">
+                                                <a class="animated slideInRight delay-03s" href="<c:url value='/abrirModalSenha'/>">
                                                     Esqueceu a senha?
                                                 </a>
                                             </div>
@@ -163,6 +168,7 @@
         </div>
     </div>
 </nav>
+
 
 <!-- Carrossel -----------------------------------
 ==================================================-->
@@ -314,23 +320,23 @@
                 <ul class="social-link">
                     <li class="twitter"><a href="#"><i class="fa-twitter"></i></a></li>
                     <li class="facebook"><a href="#"><i class="fa-facebook"></i></a></li>
-                    <li class="pinterest"><a href="#"><i class="fa-pinterest"></i></a></li>
+                    <li class="github"><a href="#"><i class="fa-github"></i></a></li>
                     <li class="gplus"><a href="#"><i class="fa-google-plus"></i></a></li>
-                    <li class="dribbble"><a href="#"><i class="fa-dribbble"></i></a></li>
+                    <li class="linkedin"><a href="#"><i class="fa-linkedin"></i></a></li>
                 </ul>
             </div>
             <div class="col-lg-6 col-sm-5 wow fadeInUp delay-05s">
-                <div class="form">
-                    <input class="input-text" type="text" name="" value="O seu nome *"
+                <div class="form" name="dados">
+                    <input class="input-text" type="text" name="nome" value="O seu nome *"
                            onfocus="if(this.value==this.defaultValue)this.value='';"
-                           onblur="if(this.value=='')this.value=this.defaultValue;">
-                    <input class="input-text" type="email" name="" value="O seu e-mail *"
+                           onblur="if(this.value=='')this.value=this.defaultValue;" required>
+                    <input class="input-text" type="email" name="email" value="O seu e-mail *"
                            onfocus="if(this.value==this.defaultValue)this.value='';"
-                           onblur="if(this.value=='')this.value=this.defaultValue;">
-                    <textarea class="input-text text-area" cols="0" rows="0"
+                           onblur="if(this.value=='')this.value=this.defaultValue;" required>
+                    <textarea class="input-text text-area" name="textArea" cols="0" rows="0"
                               onfocus="if(this.value==this.defaultValue)this.value='';"
                               onblur="if(this.value=='')this.value=this.defaultValue;">Sua mensagem *</textarea>
-                    <input class="input-btn" type="submit" value="Enviar">
+                    <input class="input-btn" type="submit" value="Enviar" required>
                 </div>
             </div>
         </div>
@@ -340,7 +346,7 @@
 <footer class="footer">
     <div class="container">
         <div class="footer-logo"><a href="#"><img src="<c:url value="/img/icon-45px.png"/>" alt=""></a></div>
-        <span class="copyright">Copyright 2015 | by NAFA System</span>
+        <span class="glyphicon glyphicon-copyright-mark copyright"> Copyright 2015 | by NAFA System</span>
     </div>
 </footer>
 
@@ -365,6 +371,7 @@
         });
     })
 </script>
+
 
 </body>
 </html>

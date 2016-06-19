@@ -19,12 +19,12 @@ public class PessoaController {
 
 	@Inject
 	private Result result;
-	
+
 	@Inject
 	private Validator validator;
 
 	private InicialController inicialController = new InicialController();
-	
+
 	private Pessoa pessoa;
 
 	@Post("/validar")
@@ -32,8 +32,7 @@ public class PessoaController {
 		Pessoa p = pessoaDao.validarUsuario(pessoa);
 		if (p != null) {
 			result.forwardTo(InicialController.class).inicial(p);
-		}
-		else {
+		} else {
 
 		}
 	}
