@@ -30,4 +30,9 @@ public @Data class Pessoa implements MinhaEntidade, Serializable {
 
 	@ManyToOne(targetEntity = MovimentacaoFinanceira.class)
 	private MovimentacaoFinanceira movimentacoesFinanceiras;
+
+	@Override
+	public Long getCodigo() {
+		return null;
+	}
 }

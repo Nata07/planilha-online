@@ -166,7 +166,7 @@
 
 <!-- Carrossel -----------------------------------
 ==================================================-->
-<div id="carrossel" class="carousel carousel-fade" data-ride="carousel">
+<div id="carrossel" class="carousel carousel-fade hidden-xs" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
         <li data-target="#carrossel" data-slide-to="0" class="active"></li>
@@ -177,13 +177,13 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
         <div class="item active">
-            <img src="<c:url value="/img/inner-banner-new-2.jpg"/>" alt="...">
+            <img class="im1" src="<c:url value="/img/inner-banner-new-2.jpg"/>" alt="...">
         </div>
         <div class="item">
-            <img src="<c:url value="/img/banner-financas-pessoais.jpg"/>" alt="...">
+            <img class="img2" src="<c:url value="/img/banner-financas-pessoais.jpg"/>" alt="...">
         </div>
         <div class="item">
-            <img src="<c:url value="/img/banner-gestao-e-financas.jpg"/>" alt="...">
+            <img class="img3" src="<c:url value="/img/banner-gestao-e-financas.jpg"/>" alt="...">
         </div>
     </div>
 
@@ -205,7 +205,7 @@
     <!-- Three columns of text below the carousel -->
     <div class="row conteudo">
         <div class="col-lg-4">
-            <img class="img-circle" src="<c:url value="/img/cartao.jpg"/>" alt="Generic placeholder image" width="140"
+            <img class="img-circle imgtop" src="<c:url value="/img/cartao.jpg"/>" alt="Generic placeholder image" width="140"
                  height="140">
             <h2 class="tituloIcone">Gastos com cartão de crédito </h2>
             <p>Cadastre seus gastos com seu cartão de crédito e veja qual a melhor forma de não ter gastos
@@ -324,7 +324,7 @@
                     <input class="input-text" type="text" name="" value="O seu nome *"
                            onfocus="if(this.value==this.defaultValue)this.value='';"
                            onblur="if(this.value=='')this.value=this.defaultValue;">
-                    <input class="input-text" type="text" name="" value="O seu e-mail *"
+                    <input class="input-text" type="email" name="" value="O seu e-mail *"
                            onfocus="if(this.value==this.defaultValue)this.value='';"
                            onblur="if(this.value=='')this.value=this.defaultValue;">
                     <textarea class="input-text text-area" cols="0" rows="0"
@@ -336,6 +336,7 @@
         </div>
     </section>
 </div>
+
 <footer class="footer">
     <div class="container">
         <div class="footer-logo"><a href="#"><img src="<c:url value="/img/icon-45px.png"/>" alt=""></a></div>
