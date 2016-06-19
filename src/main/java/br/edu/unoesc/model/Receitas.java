@@ -14,7 +14,7 @@ import java.util.Date;
 @Entity
 @Getter
 @Setter
-public class Receitas implements Serializable{
+public class Receitas implements Serializable, MinhaEntidade{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

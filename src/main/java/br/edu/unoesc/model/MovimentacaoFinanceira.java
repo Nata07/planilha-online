@@ -1,5 +1,7 @@
 package br.edu.unoesc.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -10,32 +12,32 @@ import java.util.List;
 /**
  * Created by Luiz Fachin on 12/06/2016.
  */
-@Entity
-public class MovimentacaoFinanceira implements Serializable {
+@Entity @Data
+public class MovimentacaoFinanceira implements Serializable, MinhaEntidade {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
 
-    @OneToMany(mappedBy = "movimentacaoFinanceira", targetEntity = Despesas.class, fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "movimentacaoFinanceira", targetEntity = Despesas.class, fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Despesas> despesas;
 
-    @OneToMany(mappedBy = "movimentacaoFinanceira", targetEntity = Receitas.class, fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "movimentacaoFinanceira", targetEntity = Receitas.class, fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Receitas> receitas;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Date mes;
+    private Date data;
 
     private Float saldo = 0f;
     private Float totalDespesas = 0f;
     private Float totalReceitas = 0f;
 
-    public Float totalDespesas() {
+    private Float totalDespesas() {
         despesas.forEach(despesa -> totalDespesas = totalDespesas + despesa.getValor());
         return totalDespesas;
     }
 
-    public Float totalReceitas() {
+    private Float totalReceitas() {
         receitas.forEach(receita -> totalReceitas = totalReceitas + receita.getValor());
         return totalReceitas;
     }

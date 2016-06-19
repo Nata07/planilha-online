@@ -31,6 +31,80 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/style.css"/>">
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/simple-sidebar.css"/>">
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/bootstrap-datepicker.min.css"/>">
+
+    <!--SCRIPT-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/latest/js/bootstrap.min.js"></script>
+
+    <!--Remover Linha da tabela -->
+    <script>
+        (function ($) {
+
+            RemoveTableRow = function (handler) {
+                var tr = $(handler).closest('tr');
+
+                tr.fadeOut(400, function () {
+                    tr.remove();
+                });
+
+                return false;
+            };
+
+        })(jQuery);
+    </script>
+
+    <!--Adicionar linha na tabela-->
+    <script language="javascript">
+        function inserirLinhaTabela() {
+
+            var listatipoDispesa = document.getElementById("selecao").value
+            var listaDescricao = document.getElementById("descricao").value
+            var listaValor = document.getElementById("valor").value
+            var listadata = document.getElementById("data").value
+            // var buttons = document.getElementById("remover").value
+
+            // Captura a refer�ncia da tabela com id �minhaTabela�
+            var table = document.getElementById("minhaTabela");
+            // Captura a quantidade de linhas j� existentes na tabela
+            var numOfRows = table.rows.length;
+            // Captura a quantidade de colunas da �ltima linha da tabela
+            var numOfCols = table.rows[numOfRows - 1].cells.length;
+
+            // Insere uma linha no fim da tabela.
+            var newRow = table.insertRow(numOfRows);
+
+            // Faz um loop para criar as colunas
+            for (var j = 0; j < numOfCols; j++) {
+                // Insere uma coluna na nova linha
+                newCell = newRow.insertCell(j);
+                // Insere um conte�do na coluna
+                // newCell.innerHTML = " "+ numOfRows + " "+ j;
+                // var linhatabela = numOfRows;
+                if (j == 0) {
+                    newCell.innerHTML = numOfRows;
+                }
+                if (j == 1) {
+                    newCell.innerHTML = listatipoDispesa;
+                }
+                if (j == 2) {
+
+                    newCell.innerHTML = listaDescricao;
+                }
+                if (j == 3) {
+                    newCell.innerHTML = listaValor;
+                }
+                if (j == 4) {
+                    newCell.innerHTML = listadata;
+                }
+                if (j == 5) {
+                    newCell.innerHTML = '<button class="remover btn btn-xs btn-danger" onclick="RemoveTableRow(this)" type="button">Remover</button>' + " " +
+                            '<button class="btn btn-xs btn-info" onclick="editarDados()" type="button">Editar</button>';
+                }
+
+
+            }
+        }
+    </script>
 </head>
 <body>
 
@@ -51,10 +125,10 @@
                 <a href="<c:url value='/'/>">Página Inicial</a>
             </li>
             <li>
-                <a href="<c:url value='/cadastrarDespesas/demonstrativo'/>">Demonstrativo</a>
+                <a href="<c:url value='/demonstrativo'/>">Demonstrativo</a>
             </li>
             <li>
-                <a href="<c:url value='/cadastrarDespesas/receitas'/>">Cadastrar Receitas</a>
+                <a href="<c:url value='/receitas'/>">Cadastrar Receitas</a>
             </li>
             <li class="ativo">
                 <a href="#">Cadastrar Despesas</a>
@@ -75,7 +149,7 @@
                 <div class="col-lg-8 col-lg-offset-2">
                     <h1>Cadastrar Despesas</h1>
 
-                    <form action="/adicionarDespesa" class="margin-top-10">
+                    <form action="<c:url value="/adicionarDespesa"/>" class="margin-top-10" method="post">
 
                         <div class="form-group">
                             <label>Tipo despesa</label>
@@ -83,7 +157,7 @@
                             <div class="dropdown">
 
                                 <select id="selecao" class="btn btn-default dropdown-toggle" type="button"
-                                        data-toggle="dropdown" name="despesa.tipoDespesa" required>
+                                        data-toggle="dropdown" name="despesas.tipoDespesa" required>
                                     <span class="caret"></span>
 
                                     <c:forEach items="${tpDespesas}" var="d">
@@ -100,7 +174,7 @@
                                 Descrição
                             </label>
 
-                            <input type="text" class="form-control" id="descricao" name="despesa.descricao">
+                            <input type="text" class="form-control" id="descricao" name="despesas.descricao">
                         </div>
 
                         <div class="form-group">
@@ -109,7 +183,7 @@
                             </label>
                             <div class="input-group">
                                 <div class="input-group-addon">R$</div>
-                                <input type="number" class=" form-control" id="valor" name="despesa.valor" required>
+                                <input type="number" class=" form-control" id="valor" name="despesas.valor" required>
                             </div>
 
                         </div>
@@ -120,10 +194,10 @@
                             </label>
 
                             <input type="date" class="datepicker block" data-date-format="dd/mm/yyyy" id="data"
-                                   name="despesa.data">
+                                   name="despesas.data">
                         </div>
 
-                        <button type="button" id="adicionar" class="btn btn-default">Adicionar</button>
+                        <button type="submit" id="adicionar" class="btn btn-default">Adicionar</button>
                     </form>
                     <br/>
                     <table class="table table-bordered" id="minhaTabela">
@@ -155,6 +229,7 @@
 <!-- Bootstrap Core JavaScript -->
 <script src="<c:url value="/js/bootstrap.min.js"/>"></script>
 
+<script src="<c:url value="/js/bootstrap-datepicker.min.js"/>"></script>
 
 <script>
     $(document).ready(function () {
@@ -190,81 +265,5 @@
 <script>
     $('.datepicker').datepicker();
 </script>
-
-<!--SCRIPT-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/latest/js/bootstrap.min.js"></script>
-
-<!--Remover Linha da tabela -->
-<script>
-    (function ($) {
-
-        RemoveTableRow = function (handler) {
-            var tr = $(handler).closest('tr');
-
-            tr.fadeOut(400, function () {
-                tr.remove();
-            });
-
-            return false;
-        };
-
-    })(jQuery);
-</script>
-
-<!--Adicionar linha na tabela-->
-<script language="javascript">
-    // Fun��o respons�vel por inserir linhas na tabela
-    function inserirLinhaTabela() {
-
-        var listatipoDispesa = document.getElementById("selecao").value
-        var listaDescricao = document.getElementById("descricao").value
-        var listaValor = document.getElementById("valor").value
-        var listadata = document.getElementById("data").value
-        // var buttons = document.getElementById("remover").value
-
-        // Captura a refer�ncia da tabela com id �minhaTabela�
-        var table = document.getElementById("minhaTabela");
-        // Captura a quantidade de linhas j� existentes na tabela
-        var numOfRows = table.rows.length;
-        // Captura a quantidade de colunas da �ltima linha da tabela
-        var numOfCols = table.rows[numOfRows - 1].cells.length;
-
-        // Insere uma linha no fim da tabela.
-        var newRow = table.insertRow(numOfRows);
-
-        // Faz um loop para criar as colunas
-        for (var j = 0; j < numOfCols; j++) {
-            // Insere uma coluna na nova linha
-            newCell = newRow.insertCell(j);
-            // Insere um conte�do na coluna
-            // newCell.innerHTML = " "+ numOfRows + " "+ j;
-            // var linhatabela = numOfRows;
-            if (j == 0) {
-                newCell.innerHTML = numOfRows;
-            }
-            if (j == 1) {
-                newCell.innerHTML = listatipoDispesa;
-            }
-            if (j == 2) {
-
-                newCell.innerHTML = listaDescricao;
-            }
-            if (j == 3) {
-                newCell.innerHTML = listaValor;
-            }
-            if (j == 4) {
-                newCell.innerHTML = listadata;
-            }
-            if (j == 5) {
-                newCell.innerHTML = '<button class="remover btn btn-xs btn-danger" onclick="RemoveTableRow(this)" type="button">Remover</button>' + " " +
-                        '<button class="btn btn-xs btn-info" onclick="editarDados()" type="button">Editar</button>';
-            }
-
-
-        }
-    }
-</script>
-
 </body>
 </html>

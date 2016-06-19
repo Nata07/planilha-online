@@ -103,12 +103,9 @@
                     newCell.innerHTML = '<button class="remover btn btn-xs btn-danger" onclick="RemoveTableRow(this)" type="button">Remover</button>' + " " +
                             '<button class="btn btn-xs btn-info" onclick="editarDados()" type="button">Editar</button>';
                 }
-
-
             }
         }
     </script>
-
 </head>
 <body>
 
@@ -129,13 +126,13 @@
                 <a href="<c:url value='/'/>">Página Inicial</a>
             </li>
             <li>
-                <a href="<c:url value='/cadastrarDespesas/demonstrativo'/>">Demonstrativo</a>
+                <a href="<c:url value='/demonstrativo'/>">Demonstrativo</a>
+            </li>
+            <li>
+                <a href="<c:url value='/receitas'/>">Cadastrar Receitas</a>
             </li>
             <li class="ativo">
-                <a href="#">Cadastrar Receitas</a>
-            </li>
-            <li class="">
-                <a href='<c:url value="/despesas"/>'>Cadastrar Despesas</a>
+                <a href="#">Cadastrar Despesas</a>
             </li>
         </ul>
     </nav>
@@ -151,20 +148,20 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2">
-                    <h1>Cadastrar Receitas</h1>
+                    <h1>Cadastrar Despesas</h1>
 
                     <form action="/adicionarDespesa" class="margin-top-10">
 
                         <div class="form-group">
-                            <label>Tipo receita</label>
+                            <label>Tipo despesa</label>
 
                             <div class="dropdown">
 
-                                <select id="selecao" class="btn btn-default dropdown-toggle" type="select"
-                                        data-toggle="dropdown" name="receita.tipoReceita" selected > Tipos de receita
+                                <select id="selecao" class="btn btn-default dropdown-toggle" type="button"
+                                        data-toggle="dropdown" name="despesa.tipoDespesa" required>
                                     <span class="caret"></span>
 
-                                    <c:forEach items="${tpReceita}" var="d">
+                                    <c:forEach items="${tpDespesas}" var="d">
                                         <option value="${d}">
                                             <c:out value="${d.descricao}"></c:out>
                                         </option>
@@ -178,7 +175,7 @@
                                 Descrição
                             </label>
 
-                            <input type="text" class="form-control" id="descricao" name="receita.descricao">
+                            <input type="text" class="form-control" id="descricao" name="despesa.descricao">
                         </div>
 
                         <div class="form-group">
@@ -187,23 +184,22 @@
                             </label>
                             <div class="input-group">
                                 <div class="input-group-addon">R$</div>
-                                <input type="number" class=" form-control" id="valor" name="receita.valor" required>
+                                <input type="number" class=" form-control" id="valor" name="despesa.valor" required>
                             </div>
 
                         </div>
 
                         <div class="form-group">
                             <label class="margin-top-10" for="data">
-                                Data do recebimento
+                                Data do pagamento
                             </label>
 
                             <input type="date" class="datepicker block" data-date-format="dd/mm/yyyy" id="data"
-                                   name="receita.data">
+                                   name="despesa.data">
                         </div>
 
-                        <button type="button" id="adicionar" onclick="inserirLinhaTabela()" class="btn btn-default">Adicionar</button>
+                        <button type="button" id="adicionar" class="btn btn-default">Adicionar</button>
                     </form>
-
                     <br/>
                     <table class="table table-bordered" id="minhaTabela">
                         <thead>
