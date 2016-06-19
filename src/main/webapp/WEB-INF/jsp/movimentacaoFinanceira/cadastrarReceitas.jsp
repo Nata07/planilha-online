@@ -63,7 +63,7 @@
             var listatipoDispesa = document.getElementById("selecao").value
             var listaDescricao = document.getElementById("descricao").value
             var listaValor = document.getElementById("valor").value
-            var listadata = document.getElementById("data").value
+            var listadata = document.getElementById("data").value.toString()
             // var buttons = document.getElementById("remover").value
 
             // Captura a refer�ncia da tabela com id �minhaTabela�

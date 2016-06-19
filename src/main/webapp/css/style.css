@@ -180,9 +180,9 @@ li .links-nav:hover {
 }
 
 hr {
-    border-color: #f05f40;
-    border-width: 3px;
-    max-width: 50px;
+    border-color: #444444;
+    width: 100%;
+
 }
 
 ::selection {
@@ -310,7 +310,7 @@ hr {
 /* ----------------------Contato e footer----------------
 ---------------------------------------------------------*/
 .main-section.contact{
-    padding:90px 0 100px;
+    padding:100px 0 100px;
 }
 
 /*.main-section.contact{
@@ -438,7 +438,7 @@ hr {
 
 .footer{
     background:url(../img/greywaves.png) left top no-repeat;
-    padding:35px 0 35px;
+    padding:35px 0 0px;
 }
 .footer-logo{
     margin:15px auto 35px;
@@ -485,4 +485,10 @@ hr {
 
 .portfolioContainer{
     max-width: 1140px;
+}
+
+@media (max-width: 765px) {
+    .marketing{
+        margin-top: 70px;
+    }
 }

@@ -11,7 +11,7 @@ import java.util.List;
  * Created by Luiz Fachin on 12/06/2016.
  */
 @Entity
-public class MovimentacaoFinanceira implements Serializable {
+public class MovimentacaoFinanceira implements Serializable, MinhaEntidade {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -83,5 +83,10 @@ public class MovimentacaoFinanceira implements Serializable {
                 despesas.remove(despesa);
             }
         });
+    }
+
+    @Override
+    public Long getCodigo() {
+        return null;
     }
 }
