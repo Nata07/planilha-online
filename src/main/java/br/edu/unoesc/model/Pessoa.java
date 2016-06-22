@@ -9,12 +9,14 @@ import java.util.List;
 @Entity
 @NamedQueries({
 		@NamedQuery(name = Pessoa.FILTRA_POR_NOME, query = "SELECT p FROM Pessoa p WHERE p.nome like ?1 "),
-		@NamedQuery(name = Pessoa.FILTRA_POR_USUARIO, query = "SELECT p from Pessoa p WHERE p.usuario = ?1")
+		@NamedQuery(name = Pessoa.FILTRA_POR_USUARIO, query = "SELECT p from Pessoa p WHERE p.usuario = ?1"),
+		@NamedQuery(name = Pessoa.FILTRA_POR_EMAIL, query = "SELECT p FROM Pessoa p WHERE p.email=?1")
 })
 public @Data class Pessoa implements MinhaEntidade, Serializable {
 
 	public static final String FILTRA_POR_NOME = "FILTRA_POR_NOME";
 	public static final String FILTRA_POR_USUARIO = "FILTRA_POR_USUARIO";
+	public static final String FILTRA_POR_EMAIL = "FILTRA_POR_EMAIL";
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

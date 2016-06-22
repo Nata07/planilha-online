@@ -35,4 +35,5 @@ public class InicialController {
     public void goToReceitas() {
         result.redirectTo(MovimentacaoFinanceiraController.class).cadastrarReceitas(pessoa);
     }
+
 }

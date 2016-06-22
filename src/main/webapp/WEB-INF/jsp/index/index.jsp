@@ -90,7 +90,7 @@
                                                    class="form-control input-dropdown animated slideInRight delay-03s"
                                                    name="pessoa.senha" placeholder="Senha" required>
                                             <div class="help-block text-right">
-                                                <a class="animated slideInRight delay-03s" href="<c:url value='/abrirModalSenha'/>">
+                                                <a class="animated slideInRight delay-03s" id="esqueceuSenha">
                                                     Esqueceu a senha?
                                                 </a>
                                             </div>
@@ -169,6 +169,39 @@
     </div>
 </nav>
 
+<!--MODAL-->
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header" >
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4><span class="glyphicon glyphicon-lock"></span> Esqueci minha senha </h4>
+            </div>
+            <div class="modal-body" style="padding:40px 50px;">
+                <form role="form">
+                    <div class="form-group">
+                        <label for="email"><span class="glyphicon glyphicon-envelope"></span> Email</label>
+                        <input type="text" class="form-control" id="email" placeholder="Email">
+                    </div>
+
+                    <button type="submit" id="enviarEmail" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-ok">
+
+                        </span> Enviar </button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-remove"></span> Cancelar</button>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
 
 <!-- Carrossel -----------------------------------
 ==================================================-->
@@ -317,7 +350,7 @@
                         Só loucos.
                     </span>
                 </div>
-                <ul class="social-link">
+                <ul class="social-link redeSocial">
                     <li class="twitter"><a href="#"><i class="fa-twitter"></i></a></li>
                     <li class="facebook"><a href="#"><i class="fa-facebook"></i></a></li>
                     <li class="github"><a href="#"><i class="fa-github"></i></a></li>
@@ -370,6 +403,14 @@
             event.preventDefault();
         });
     })
+</script>
+
+<script>
+    $(document).ready(function(){
+        $("#esqueceuSenha").click(function(){
+            $("#myModal").modal();
+        });
+    });
 </script>
 
 
