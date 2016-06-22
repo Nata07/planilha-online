@@ -2,6 +2,7 @@ package br.edu.unoesc.dao;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
 import br.edu.unoesc.model.Pessoa;
@@ -35,7 +36,4 @@ public class PessoaDAO extends HibernateDAO<Pessoa> {
         return null;
     }
 
-    /*public Float retornaSaldo() {
-        //TODO: CONSULTA NO BANCO QUE RETORNE O SALDO DA PESSOA LOGADA.
-    }*/
 }

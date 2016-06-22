@@ -44,7 +44,7 @@
 
     <!-- Sidebar -->
     <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
-        <ul class="nav sidebar-nav">
+        <ul class="nav sidebar-nav menuInicial">
             <li class="sidebar-brand">
                 <a href="#" class="nao-clicavel">
                     <figure>

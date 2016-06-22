@@ -31,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/style.css"/>">
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/simple-sidebar.css"/>">
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/bootstrap-datepicker.min.css"/>">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
 
     <!--SCRIPT-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -113,7 +114,7 @@
 
     <!-- Sidebar -->
     <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
-        <ul class="nav sidebar-nav">
+        <ul class="nav sidebar-nav menuInicial">
             <li class="sidebar-brand">
                 <a href="#" class="nao-clicavel">
                     <figure>

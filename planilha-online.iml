@@ -33,6 +33,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="jquery" level="application" />
     <orderEntry type="library" name="Maven: br.com.caelum:vraptor:4.2.0-RC3" level="project" />
     <orderEntry type="library" name="Maven: com.google.guava:guava:15.0" level="project" />
     <orderEntry type="library" name="Maven: br.com.caelum:iogi:1.0.0" level="project" />

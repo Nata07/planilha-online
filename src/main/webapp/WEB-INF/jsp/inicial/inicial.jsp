@@ -30,6 +30,7 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/carousel.css"/>">
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/style.css"/>">
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/simple-sidebar.css"/>">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
 </head>
 <body>
 
@@ -38,8 +39,8 @@
 
     <!-- Sidebar -->
     <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
-        <ul class="nav sidebar-nav">
-            <li class="sidebar-brand menuLateral">
+        <ul class="nav sidebar-nav menuInicial">
+            <li class="sidebar-brand">
                 <a href="#">
                     <figure>
                         <img src="<c:url value="/img/icon-55px.png"/>" alt="">
