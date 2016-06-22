@@ -172,7 +172,23 @@ li .links-nav:hover {
     margin: 0 auto;
     padding-top: 85px;
 }
+.titulo h1{
+    text-align: center;
 
+}
+
+.conteudo{
+    margin-top: 120px;
+}
+
+.tituloSevico{
+    margin-top: 50px;
+}
+
+.tituloIcone{
+    font-size: 26px;
+    margin-top: 10px;
+}
 /* ----------------------Serviços-------------------------
 ---------------------------------------------------------*/
 .servicos-div {

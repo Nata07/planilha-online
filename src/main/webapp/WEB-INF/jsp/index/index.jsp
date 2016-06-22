@@ -21,6 +21,7 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/font-awesome.css"/>">
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/carousel.css"/>">
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/style.css"/>">
+
 </head>
 <body>
 <!-- Barra de navegação -->
@@ -57,7 +58,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="#contact">
                         Contato
                     </a>
                 </li>
@@ -241,8 +242,12 @@
 ==================================================-->
 <div class="container marketing" id="caracteristicas">
 
+    <div class="col-xs-12 titulo">
+        <h1>Características</h1>
+    </div>
     <!-- Three columns of text below the carousel -->
     <div class="row conteudo">
+
         <div class="col-lg-4">
             <img class="img-circle imgtop" src="<c:url value="/img/cartao.jpg"/>" alt="Generic placeholder image" width="140"
                  height="140">
@@ -275,7 +280,7 @@
 
     <div class="row featurette">
         <div class="col-md-7">
-            <h2 class="featurette-heading" style="margin-top: 50px; font-family: sans-serif;">Cadastros rápidos. </h2>
+            <h2 class="featurette-heading tituloSevico">Cadastros rápidos. </h2>
             <p class="lead">Com o NF Finananças você tem a facilidade nos cadastros de receitas e dispesas. Você poderar
                 cadastrar todos seus dados com poucos cliques. </p>
         </div>
@@ -291,7 +296,7 @@
 
     <div class="row featurette">
         <div class="col-md-7 col-md-push-5">
-            <h2 class="featurette-heading" style="margin-top: 50px; font-family: sans-serif;"> Relatórios completos</h2>
+            <h2 class="featurette-heading tituloSevico"> Relatórios completos</h2>
             <p class="lead">O NF Financias possiu o relatório completo para você. Tenha todos os meses, um relatorio
                 simplificado para controle pessoal.</p>
         </div>
@@ -325,7 +330,7 @@
             <div class="col-lg-6 col-sm-7 wow fadeInLeft">
                 <div class="contact-info-box address clearfix">
                     <h3><i class=" icon-map-marker"></i>Address:</h3>
-                    <span>308 Negra Arroyo Lane<br>Albuquerque, New Mexico, 87111.</span>
+                    <span>Rua A,11 <br> Centro - Xanxerê-SC - Brasil.</span>
                 </div>
                 <div class="contact-info-box phone clearfix">
                     <h3><i class="fa-phone"></i>Fone:</h3>

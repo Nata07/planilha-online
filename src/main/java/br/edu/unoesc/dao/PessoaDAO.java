@@ -36,19 +36,4 @@ public class PessoaDAO extends HibernateDAO<Pessoa> {
         return null;
     }
 
-    public Pessoa buscarPorEmail(String email){
-        this.conectar();
-        try {
-            TypedQuery<Pessoa> query = em.createNamedQuery(Pessoa.FILTRA_POR_EMAIL, Pessoa.class);
-            query.setParameter(1, email);
-            return query.getSingleResult();
-
-        } catch (NoResultException nre) {
-            return null;
-        }
-        finally
-         {
-            this.finalizar();
-        }
-    }
 }
