@@ -21,9 +21,7 @@ public class Receitas implements Serializable, MinhaEntidade{
     private Long codigo;
     private String descricao;
     private Float valor;
-    private String tipoReceitas;
-    @Temporal(TemporalType.TIMESTAMP)
+    private TipoReceita tipoReceita;
+    @Temporal(TemporalType.DATE)
     private Date data;
-    @ManyToOne(optional = false, targetEntity = MovimentacaoFinanceira.class)
-    private MovimentacaoFinanceira movimentacaoFinanceira;
 }

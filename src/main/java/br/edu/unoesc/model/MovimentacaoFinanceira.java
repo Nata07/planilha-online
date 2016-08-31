@@ -1,10 +1,10 @@
 package br.edu.unoesc.model;
 
+import br.edu.unoesc.dao.MovimentacaoFinanceiraDAO;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -13,37 +13,61 @@ import java.util.List;
  * Created by Luiz Fachin on 12/06/2016.
  */
 @Entity @Data
+@NamedQueries({
+        @NamedQuery(name = MovimentacaoFinanceira.BUSCAR_SALDO, query = "SELECT SUM(mf.saldo) FROM MovimentacaoFinanceira mf")
+})
 public class MovimentacaoFinanceira implements Serializable, MinhaEntidade {
+
+    public static final String BUSCAR_SALDO = "BUSCAR_SALDO";
+    public static final String BUSCAR_TODOS = "BUSCAR_TODOS";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
 
-    @OneToMany(mappedBy = "movimentacaoFinanceira", targetEntity = Despesas.class, fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+    @JoinTable(name="MOVIMENTACAO_DESPESAS", joinColumns={@JoinColumn(name="MOVIMENTACAO_CODIGO", referencedColumnName="codigo")}, inverseJoinColumns={@JoinColumn(name="DESPESAS_CODIGO", referencedColumnName="codigo")})
     private List<Despesas> despesas;
 
-    @OneToMany(mappedBy = "movimentacaoFinanceira", targetEntity = Receitas.class, fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+    @JoinTable(name="MOVIMENTACAO_RECEITAS", joinColumns={@JoinColumn(name="MOVIMENTACAO_CODIGO", referencedColumnName="codigo")}, inverseJoinColumns={@JoinColumn(name="RECEITAS_CODIGO", referencedColumnName="codigo")})
     private List<Receitas> receitas;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date data;
 
-    private Float saldo = 0f;
-    private Float totalDespesas = 0f;
-    private Float totalReceitas = 0f;
+    private Double saldo = 0.0;
+    @Transient
+    private Double totalDespesas = 0.0;
+    @Transient
+    private Double totalReceitas = 0.0;
+    @Transient
+    private MovimentacaoFinanceiraDAO mfdao;
 
-    private Float totalDespesas() {
-        despesas.forEach(despesa -> totalDespesas = totalDespesas + despesa.getValor());
-        return totalDespesas;
+
+
+    private Double totalDespesas() {
+        if (despesas != null) {
+            despesas.forEach(despesa -> totalDespesas = totalDespesas + despesa.getValor());
+            return totalDespesas;
+        } else {
+            return 0.0;
+        }
     }
 
-    private Float totalReceitas() {
-        receitas.forEach(receita -> totalReceitas = totalReceitas + receita.getValor());
-        return totalReceitas;
+    private Double totalReceitas() {
+        if (receitas != null) {
+            receitas.forEach(receita -> totalReceitas = totalReceitas + receita.getValor());
+            return totalReceitas;
+        }else {
+            return 0.0;
+        }
     }
 
-    public Float calcularSaldo() {
-        saldo = totalReceitas() - totalDespesas();
+    public Double calcularSaldo() {
+        mfdao = new MovimentacaoFinanceiraDAO();
+        saldo = mfdao.buscarSaldo();
+        saldo = saldo + (totalReceitas() - totalDespesas());
         return saldo;
     }
 
@@ -85,5 +109,25 @@ public class MovimentacaoFinanceira implements Serializable, MinhaEntidade {
                 despesas.remove(despesa);
             }
         });
+    }
+
+    private void limparListas(){
+        if (despesas != null) {
+            despesas.clear();
+        }
+        if (receitas != null) {
+            receitas.clear();
+        }
+    }
+
+    private void limparVariaveisDouble(){
+        saldo = 0.0;
+        totalDespesas = 0.0;
+        totalReceitas = 0.0;
+    }
+
+    public void limparDados(){
+        limparListas();
+        limparVariaveisDouble();
     }
 }

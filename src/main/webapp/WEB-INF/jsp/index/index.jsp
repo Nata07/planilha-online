@@ -84,7 +84,7 @@
                                         <div class="form-group">
                                             <input type="text"
                                                    class="form-control input-dropdown animated slideInLeft delay-03s"
-                                                   name="pessoa.usuario" placeholder="Usuario" required>
+                                                   name="pessoa.cpf" placeholder="Usuario" required>
                                         </div>
                                         <div class="form-group">
                                             <input type="password"
@@ -145,7 +145,7 @@
                                     <div class="form-group">
                                         <input type="text"
                                                class="form-control input-dropdown animated slideInLeft delay-03s"
-                                               name="pessoa.usuario" placeholder="Usuario" required>
+                                               name="pessoa.cpf" placeholder="Usuario" required>
                                     </div>
 
                                     <div class="form-group">
@@ -242,17 +242,19 @@
 ==================================================-->
 <div class="container marketing" id="caracteristicas">
 
-    <div class="col-xs-12 titulo">
-        <h1>Características</h1>
-    </div>
+
     <!-- Three columns of text below the carousel -->
     <div class="row conteudo">
+
+        <div class="col-xs-12 titulo">
+            <h1>Características</h1>
+        </div>
 
         <div class="col-lg-4">
             <img class="img-circle imgtop" src="<c:url value="/img/cartao.jpg"/>" alt="Generic placeholder image" width="140"
                  height="140">
             <h2 class="tituloIcone">Gastos com cartão de crédito </h2>
-            <p>Cadastre seus gastos com seu cartão de crédito e veja qual a melhor forma de não ter gastos
+            <p class="lead">Cadastre seus gastos com seu cartão de crédito e veja qual a melhor forma de não ter gastos
                 desnecessários.</p>
         </div><!-- /.col-lg-4 -->
 
@@ -260,7 +262,7 @@
             <img class="img-circle" src="<c:url value="/img/controle.jpg"/>" alt="Generic placeholder image" width="140"
                  height="140">
             <h2 class="tituloIcone">Controle seus gastos</h2>
-            <p>Controle seu dinheiro, veja o que acontece em um so lugar. Receba aviso de gasto ou estouro, e nao perca
+            <p class="lead">Controle seu dinheiro, veja o que acontece em um so lugar. Receba aviso de gasto ou estouro, e nao perca
                 mais seu sono.</p>
         </div><!-- /.col-lg-4 -->
 
@@ -268,7 +270,7 @@
             <img class="img-circle " src="<c:url value="/img/circulo_peq_estat_5.png"/>" alt="Generic placeholder image"
                  width="140" height="140">
             <h2 class="tituloIcone">Planeje seus investimentos </h2>
-            <p>Trace suas metas e acompanhe automaticamente quanto gastou ou ainda quanto irá gastar em cada
+            <p class="lead">Trace suas metas e acompanhe automaticamente quanto gastou ou ainda quanto irá gastar em cada
                 categoria.</p>
         </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->
@@ -320,11 +322,11 @@
         </div>
     </div>
 
-    <hr class="featurette-divider">
+    <hr class="featurette-divider" id="contact">
 
     <!-- /END THE FEATURETTES -->
 
-    <section class="main-section contact" id="contact">
+    <section class="main-section contact">
 
         <div class="row">
             <div class="col-lg-6 col-sm-7 wow fadeInLeft">

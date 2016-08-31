@@ -33,79 +33,6 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/bootstrap-datepicker.min.css"/>">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
 
-    <!--SCRIPT-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/latest/js/bootstrap.min.js"></script>
-
-    <!--Remover Linha da tabela -->
-    <script>
-        (function ($) {
-
-            RemoveTableRow = function (handler) {
-                var tr = $(handler).closest('tr');
-
-                tr.fadeOut(400, function () {
-                    tr.remove();
-                });
-
-                return false;
-            };
-
-        })(jQuery);
-    </script>
-
-    <!--Adicionar linha na tabela-->
-    <script language="javascript">
-        function inserirLinhaTabela() {
-
-            var listatipoDispesa = document.getElementById("selecao").value
-            var listaDescricao = document.getElementById("descricao").value
-            var listaValor = document.getElementById("valor").value
-            var listadata = document.getElementById("data").value
-            // var buttons = document.getElementById("remover").value
-
-            // Captura a refer�ncia da tabela com id �minhaTabela�
-            var table = document.getElementById("minhaTabela");
-            // Captura a quantidade de linhas j� existentes na tabela
-            var numOfRows = table.rows.length;
-            // Captura a quantidade de colunas da �ltima linha da tabela
-            var numOfCols = table.rows[numOfRows - 1].cells.length;
-
-            // Insere uma linha no fim da tabela.
-            var newRow = table.insertRow(numOfRows);
-
-            // Faz um loop para criar as colunas
-            for (var j = 0; j < numOfCols; j++) {
-                // Insere uma coluna na nova linha
-                newCell = newRow.insertCell(j);
-                // Insere um conte�do na coluna
-                // newCell.innerHTML = " "+ numOfRows + " "+ j;
-                // var linhatabela = numOfRows;
-                if (j == 0) {
-                    newCell.innerHTML = numOfRows;
-                }
-                if (j == 1) {
-                    newCell.innerHTML = listatipoDispesa;
-                }
-                if (j == 2) {
-
-                    newCell.innerHTML = listaDescricao;
-                }
-                if (j == 3) {
-                    newCell.innerHTML = listaValor;
-                }
-                if (j == 4) {
-                    newCell.innerHTML = listadata;
-                }
-                if (j == 5) {
-                    newCell.innerHTML = '<button class="remover btn btn-xs btn-danger" onclick="RemoveTableRow(this)" type="button">Remover</button>' + " " +
-                            '<button class="btn btn-xs btn-info" onclick="editarDados()" type="button">Editar</button>';
-                }
-
-
-            }
-        }
-    </script>
 </head>
 <body>
 
@@ -114,7 +41,7 @@
 
     <!-- Sidebar -->
     <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
-        <ul class="nav sidebar-nav menuInicial">
+        <ul class="nav sidebar-nav">
             <li class="sidebar-brand">
                 <a href="#" class="nao-clicavel">
                     <figure>
@@ -147,10 +74,12 @@
         </button>
         <div class="container">
             <div class="row">
+
                 <div class="col-lg-8 col-lg-offset-2">
+                    ${alerta}
                     <h1>Cadastrar Despesas</h1>
 
-                    <form action="<c:url value="/adicionarDespesa"/>" class="margin-top-10" method="post">
+                    <form action="<c:url value="/salvarDespesa"/>" class="margin-top-10" method="post">
 
                         <div class="form-group">
                             <label>Tipo despesa</label>
@@ -158,7 +87,7 @@
                             <div class="dropdown">
 
                                 <select id="selecao" class="btn btn-default dropdown-toggle" type="button"
-                                        data-toggle="dropdown" name="despesas.tipoDespesa" required>
+                                        data-toggle="dropdown" name="despesas.tipoDespesa.descricao" required>
                                     <span class="caret"></span>
 
                                     <c:forEach items="${tpDespesas}" var="d">
@@ -194,26 +123,14 @@
                                 Data do pagamento
                             </label>
 
-                            <input type="date" class="datepicker block" data-date-format="dd/mm/yyyy" id="data"
+                            <input type="text" class="datepicker block" data-date-format="dd/mm/yyyy" id="data"
                                    name="despesas.data">
                         </div>
 
-                        <button type="submit" id="adicionar" class="btn btn-default">Adicionar</button>
+                        <button type="submit" id="adicionar" class="btn btn-primary">Salvar despesa</button>
                     </form>
                     <br/>
-                    <table class="table table-bordered" id="minhaTabela">
-                        <thead>
-                        <tr>
-                            <th>N</th>
-                            <th>Tipo despesa</th>
-                            <th>Descricao</th>
-                            <th>Valor</th>
-                            <th>Data</th>
-                            <th class="actions">Acao</th>
-                        </tr>
-                        </thead>
-                    </table>
-                    <button type="button" class="btn btn-success" onclick="" id="salvar">Salvar</button>
+                    <a href="<c:url value="/gravarDespesa" />" class="btn btn-success" id="salvar">Gravar despesas</a>
                 </div>
             </div>
         </div>
@@ -229,7 +146,6 @@
 
 <!-- Bootstrap Core JavaScript -->
 <script src="<c:url value="/js/bootstrap.min.js"/>"></script>
-
 <script src="<c:url value="/js/bootstrap-datepicker.min.js"/>"></script>
 
 <script>
@@ -263,8 +179,5 @@
     });
 </script>
 
-<script>
-    $('.datepicker').datepicker();
-</script>
 </body>
 </html>

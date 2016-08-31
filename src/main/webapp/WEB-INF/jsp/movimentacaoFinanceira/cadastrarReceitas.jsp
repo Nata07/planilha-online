@@ -32,10 +32,6 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/simple-sidebar.css"/>">
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/bootstrap-datepicker.min.css"/>">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
-
-
-
-
 </head>
 <body>
 
@@ -77,10 +73,13 @@
         </button>
         <div class="container">
             <div class="row">
+
                 <div class="col-lg-8 col-lg-offset-2">
+                    ${alerta}
                     <h1>Cadastrar Receitas</h1>
 
-                    <form action="/adicionarDespesa" class="margin-top-10">
+                    <form action="<c:url value="/salvarReceita" />" class="margin-top-10" method="post">
+
 
                         <div class="form-group">
                             <label>Tipo receita</label>
@@ -88,12 +87,12 @@
                             <div class="dropdown">
 
                                 <select id="selecao" class="btn btn-default dropdown-toggle" type="select"
-                                        data-toggle="dropdown" name="receita.tipoReceita" selected > Tipos de receita
+                                        data-toggle="dropdown" name="receitas.tipoReceita.descricao" selected > Tipos de receita
                                     <span class="caret"></span>
 
-                                    <c:forEach items="${tpReceita}" var="d">
-                                        <option value="${d}">
-                                            <c:out value="${d.descricao}"></c:out>
+                                    <c:forEach items="${tpReceitas}" var="r">
+                                        <option value="${r}">
+                                            <c:out value="${r.descricao}"></c:out>
                                         </option>
                                     </c:forEach>
                                 </select>
@@ -105,7 +104,7 @@
                                 Descrição
                             </label>
 
-                            <input type="text" class="form-control" id="descricao" name="receita.descricao">
+                            <input type="text" class="form-control" id="descricao" name="receitas.descricao">
                         </div>
 
                         <div class="form-group">
@@ -114,7 +113,7 @@
                             </label>
                             <div class="input-group">
                                 <div class="input-group-addon">R$</div>
-                                <input type="number" class=" form-control" id="valor" name="receita.valor" required>
+                                <input type="number" class=" form-control" id="valor" name="receitas.valor" required>
                             </div>
 
                         </div>
@@ -124,16 +123,14 @@
                                 Data do recebimento
                             </label>
 
-                            <input type="date" class="datepicker block" data-date-format="dd/mm/yyyy" id="data"
-                                   name="receita.data">
+                            <input type="text" class="datepicker block" data-date-format="dd/mm/yyyy" id="data"
+                                   name="receitas.data">
                         </div>
 
-                        <button type="button" id="adicionar" onclick="inserirLinhaTabela()" class="btn btn-default">Adicionar</button>
+                        <button type="submit" id="adicionar" class="btn btn-primary">Salvar receita</button>
                     </form>
-
                     <br/>
-
-                    <button type="button" class="btn btn-success" onclick="" id="salvar">Salvar</button>
+                    <a href="<c:url value="/gravarReceita" />" class="btn btn-success" id="salvar">Gravar receitas</a>
                 </div>
             </div>
         </div>
@@ -181,5 +178,6 @@
         });
     });
 </script>
+
 </body>
 </html>

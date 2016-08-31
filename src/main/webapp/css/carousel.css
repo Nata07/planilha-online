@@ -83,6 +83,8 @@ body {
 
 .featurette-divider {
   margin: 80px 0; /* Space out the Bootstrap <hr> more */
+  border-color: #9dc1d3;
+  box-shadow: 0 0px 5px 0px #888181;
 }
 
 /* Thin out the marketing headings */

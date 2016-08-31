@@ -5,7 +5,6 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.validator.Validator;
-import br.edu.unoesc.dao.DespesasDAO;
 import br.edu.unoesc.dao.MovimentacaoFinanceiraDAO;
 import br.edu.unoesc.dao.PessoaDAO;
 import br.edu.unoesc.exception.DAOException;
@@ -34,9 +33,7 @@ public class MovimentacaoFinanceiraController {
     private MovimentacaoFinanceiraDAO movimentacaoFinanceiraDAO;
     @Inject
     private PessoaDAO pessoaDAO;
-    @Inject
-    private DespesasDAO despesasDAO;
-    private MovimentacaoFinanceira movimentacaoFinanceira = new MovimentacaoFinanceira();
+    private MovimentacaoFinanceira movimentacaoFinanceira;
     @Inject
     private InicialController inicialController;
     @Inject
@@ -44,7 +41,7 @@ public class MovimentacaoFinanceiraController {
     @Inject
     private Validator validator;
 
-    @Transient
+    @ApplicationScoped
     private int sucesso = -1;
 
     @Inject
@@ -63,44 +60,93 @@ public class MovimentacaoFinanceiraController {
     }
 
     public void cadastrarReceitas(Pessoa p) {
-        this.pessoa = p;
-        result.include("nomePessoa", p.getNome());
+        if (sucesso == -1) {
+            incluirTiposReceitas();
+            this.pessoa = p;
+            setMF(p);
+        }
+        else if (sucesso == 2) {
+            incluirTiposReceitas();
+            result.include("alerta", "<div class=\"alert alert-success\" role=\"alert\">Receita salva com sucesso</div>");
+        }
+        else if (sucesso == 0) {
+            incluirTiposReceitas();
+            result.include("alerta", "<div class=\"alert alert-danger\" role=\"alert\">Erro ao salvar receita</div>");
+        }
+        else if (sucesso == -2) {
+            incluirTiposReceitas();
+            result.include("alerta", "<div class=\"alert alert-danger\" role=\"alert\">Erro no banco</div>");
+        }
+        else if (sucesso == 3) {
+            incluirTiposReceitas();
+        }
+    }
+
+    private void setMF(Pessoa p) {
+        if (pessoa.getMovimentacoesFinanceiras() == null) {
+            this.movimentacaoFinanceira = new MovimentacaoFinanceira();
+        } else {
+            this.movimentacaoFinanceira = p.getMovimentacoesFinanceiras();
+        }
     }
 
     public void cadastrarDespesas(Pessoa p) {
-        if (sucesso == 1) {
-            result.include("alerta", "<div class=\"alert alert-success\" role=\"alert\">Despesa salva com sucesso</div>");
+        if (sucesso == -1) {
             incluirTiposDespesas();
+            this.pessoa = p;
+            setMF(p);
         }
-        else if (sucesso == 2) {
-            result.include("alerta", "<div class=\"alert alert-success\" role=\"alert\">Despesas gravadas com sucesso</div>");
+        else if (sucesso == 3) {
             incluirTiposDespesas();
+            result.include("alerta", "<div class=\"alert alert-success\" role=\"alert\">Despesa salva com sucesso</div>");
         }
         else if (sucesso == 0) {
-            result.include("alerta", "<div class=\"alert alert-danger\" role=\"alert\">Erro ao salvar despesa</div>");
             incluirTiposDespesas();
+            result.include("alerta", "<div class=\"alert alert-danger\" role=\"alert\">Erro ao salvar despesa</div>");
         }
         else if (sucesso == -2) {
+            incluirTiposDespesas();
             result.include("alerta", "<div class=\"alert alert-danger\" role=\"alert\">Erro no banco</div>");
+        }
+        else if (sucesso == 2) {
             incluirTiposDespesas();
         }
-        this.pessoa = p;
     }
 
     @Get("/demonstrativo")
     public void goToInicial() {
-        result.redirectTo(InicialController.class).inicial(pessoa);
+        result.redirectTo(InicialController.class).inicial(pessoa, 1);
     }
 
     @Post("/salvarDespesa")
     public void salvarDespesa(Despesas despesas) {
         try {
             movimentacaoFinanceira.addDespesa(despesas);
-            sucesso = 1;
-            result.redirectTo(MovimentacaoFinanceiraController.class).cadastrarReceitas(pessoa);
+            sucesso = 3;
+            result.redirectTo(MovimentacaoFinanceiraController.class).cadastrarDespesas(pessoa);
         } catch (Exception e) {
             e.printStackTrace();
             sucesso = 0;
+            retornaMensagemOnErrorDespesas();
+        }
+    }
+
+    @Get("/gravarDespesa")
+    public void gravarDespesa() {
+        try {
+            MovimentacaoFinanceiraDAO mfdao = new MovimentacaoFinanceiraDAO();
+            movimentacaoFinanceira.setSaldo(movimentacaoFinanceira.calcularSaldo());
+            movimentacaoFinanceira.setData(ConversorData.toDate(LocalDate.now()));
+            mfdao.salvar(movimentacaoFinanceira);
+            Pessoa p = pessoaDAO.buscarPorUsuario(pessoa.getCpf());
+            p.setMovimentacoesFinanceiras(movimentacaoFinanceira);
+            pessoaDAO.salvar(p);
+            this.pessoa = p;
+            movimentacaoFinanceira.limparDados();
+            result.redirectTo(MovimentacaoFinanceiraController.class).goToInicial();
+        } catch (DAOException e) {
+            e.printStackTrace();
+            sucesso = -2;
             retornaMensagemOnErrorDespesas();
         }
     }
@@ -113,27 +159,11 @@ public class MovimentacaoFinanceiraController {
         validator.onErrorUse(page()).of(MovimentacaoFinanceiraController.class).cadastrarReceitas(pessoa);
     }
 
-    @Get("/gravarDespesa")
-    public void gravarDespesa() {
-        try {
-            MovimentacaoFinanceiraDAO mfdao = new MovimentacaoFinanceiraDAO();
-            movimentacaoFinanceira.setSaldo(movimentacaoFinanceira.calcularSaldo());
-            movimentacaoFinanceira.setData(ConversorData.toDate(LocalDate.now()));
-            mfdao.salvar(movimentacaoFinanceira);
-            sucesso = 2;
-            result.redirectTo(MovimentacaoFinanceiraController.class).cadastrarDespesas(pessoa);
-        } catch (DAOException e) {
-            e.printStackTrace();
-            sucesso = -2;
-            retornaMensagemOnErrorDespesas();
-        }
-    }
-
     @Post("/salvarReceita")
     public void salvarReceita(Receitas receitas) {
         try {
             movimentacaoFinanceira.addReceita(receitas);
-            sucesso = 1;
+            sucesso = 2;
             result.redirectTo(MovimentacaoFinanceiraController.class).cadastrarReceitas(pessoa);
         } catch (Exception e) {
             e.printStackTrace();
@@ -149,7 +179,10 @@ public class MovimentacaoFinanceiraController {
             movimentacaoFinanceira.setSaldo(movimentacaoFinanceira.calcularSaldo());
             movimentacaoFinanceira.setData(ConversorData.toDate(LocalDate.now()));
             mfdao.salvar(movimentacaoFinanceira);
-            sucesso = 2;
+            Pessoa p = pessoaDAO.buscarPorUsuario(pessoa.getCpf());
+            p.setMovimentacoesFinanceiras(movimentacaoFinanceira);
+            pessoaDAO.salvar(p);
+            movimentacaoFinanceira.limparDados();
             result.redirectTo(MovimentacaoFinanceiraController.class).goToInicial();
         } catch (DAOException e) {
             e.printStackTrace();

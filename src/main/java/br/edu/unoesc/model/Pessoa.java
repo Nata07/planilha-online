@@ -6,18 +6,20 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
+
+
 @Entity
 @NamedQueries({
 		@NamedQuery(name = Pessoa.FILTRA_POR_NOME, query = "SELECT p FROM Pessoa p WHERE p.nome like ?1 "),
-		@NamedQuery(name = Pessoa.FILTRA_POR_USUARIO, query = "SELECT p from Pessoa p WHERE p.usuario = ?1"),
-		@NamedQuery(name = Pessoa.FILTRA_POR_EMAIL, query = "SELECT p FROM Pessoa p WHERE p.email=?1")
+		@NamedQuery(name = Pessoa.FILTRA_POR_USUARIO, query = "SELECT p FROM Pessoa p WHERE p.cpf = ?1"),
+		@NamedQuery(name = Pessoa.RETORNA_MF, query = "SELECT DISTINCT p.movimentacoesFinanceiras FROM Pessoa p WHERE p.movimentacoesFinanceiras = ?1")
 })
 public @Data class Pessoa implements MinhaEntidade, Serializable {
 
 	public static final String FILTRA_POR_NOME = "FILTRA_POR_NOME";
 	public static final String FILTRA_POR_USUARIO = "FILTRA_POR_USUARIO";
-	public static final String FILTRA_POR_EMAIL = "FILTRA_POR_EMAIL";
-	
+	public static final String RETORNA_MF = "RETORNA_MF";
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
@@ -25,16 +27,16 @@ public @Data class Pessoa implements MinhaEntidade, Serializable {
 	private String nome;
 	@Column(nullable = false, unique = true)
 	private String email;
+	@Column(nullable = false, unique = true)
+	private String cpf;
 	@Column(nullable = false)
 	private String senha;
-	@Column(nullable = false, unique = true)
-	private String usuario;
+	@Column
+	private String sexo;
+	@Column
+	private String telefone;
 
-	@ManyToOne(targetEntity = MovimentacaoFinanceira.class)
+
+	@ManyToOne(targetEntity = MovimentacaoFinanceira.class, fetch = FetchType.EAGER)
 	private MovimentacaoFinanceira movimentacoesFinanceiras;
-
-	@Override
-	public Long getCodigo() {
-		return null;
-	}
 }

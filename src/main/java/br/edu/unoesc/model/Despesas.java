@@ -18,7 +18,7 @@ public class Despesas implements Serializable, MinhaEntidade {
     private Long codigo;
     private String descricao;
     private Float valor;
-    private String tipoDespesa;
+    private TipoDespesa tipoDespesa;
     @Temporal(TemporalType.DATE)
     @Column(nullable = true)
     private Date data;

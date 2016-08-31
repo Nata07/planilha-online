@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <html lang="pt-br">
 <head>
@@ -72,10 +72,63 @@
         </button>
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
+                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-2">
                     <h1>Demonstrativo</h1>
                     <p>Bem vindo ${nomeUsuario}!</p>
-                    <span>Seu saldo atual é R$: (pegar valor do saldo e mostrar vermelho, amarelo ou verde)</span>
+                    <span>Seu saldo atual é R$: ${saldo}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-5 col-lg-offset-2 col-xs-10 col-xs-offset-2">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <caption class="tb-caption">Receitas</caption>
+                            <th>#</th>
+                            <th>Tipo</th>
+                            <th>Descrição</th>
+                            <th>Valor R$</th>
+                            <th>Data</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach items="${listaReceitas}" var="listR">
+                            <tr>
+                                <td>${listR.codigo }</td>
+                                <td>${listR.tipoReceita }</td>
+                                <td>${listR.descricao }</td>
+                                <td>${listR.valor }</td>
+                                <td>${listR.data }</td>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="col-lg-5 col-lg-offset-2 col-xs-10 col-xs-offset-2">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <caption class="tb-caption">Despesas</caption>
+                            <th>#</th>
+                            <th>Tipo</th>
+                            <th>Descrição</th>
+                            <th>Valor R$</th>
+                            <th>Data</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach items="${listaDespesas}" var="listD">
+                            <tr>
+                                <td>${listD.codigo }</td>
+                                <td>${listD.tipoDespesa }</td>
+                                <td>${listD.descricao }</td>
+                                <td>${listD.valor }</td>
+                                <td>${listD.data }</td>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
