@@ -7,7 +7,7 @@ import javax.persistence.TypedQuery;
 
 import br.edu.unoesc.model.MovimentacaoFinanceira;
 import br.edu.unoesc.model.Pessoa;
-import org.hibernate.Criteria;
+
 
 @RequestScoped
 public class PessoaDAO extends HibernateDAO<Pessoa> {

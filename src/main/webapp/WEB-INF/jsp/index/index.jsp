@@ -79,12 +79,12 @@
                                     <span class="animated fadeInDown delay-03s">
                                         Entre
                                     </span>
-                                    <form action="<c:url value="/validar"/>" class="form form-nav " method="post"
+                                    <form action="<c:url value="/validar"/>" method="post" class="form form-nav" 
                                           role="form">
                                         <div class="form-group">
                                             <input type="text"
                                                    class="form-control input-dropdown animated slideInLeft delay-03s"
-                                                   name="pessoa.cpf" placeholder="Usuario" required>
+                                                   name="pessoa.email" placeholder="Usuario" required>
                                         </div>
                                         <div class="form-group">
                                             <input type="password"

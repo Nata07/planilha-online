@@ -49,6 +49,7 @@ public class MovimentacaoFinanceiraController {
         this.result = result;
         incluirTiposDespesas();
         incluirTiposReceitas();
+        
     }
 
     private void incluirTiposReceitas() {
